@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Robot-bold";
+    src: url("./fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("./fonts/Roboto-Regular.ttf");
+}
+
+$roboto_bold: "Robot-bold", sans-serif;
+$roboto: "Roboto", sans-serif;

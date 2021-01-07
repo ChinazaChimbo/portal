@@ -1,0 +1,170 @@
+@font-face {
+  font-family: "Robot-bold";
+  src: url("./fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./fonts/Roboto-Regular.ttf");
+}
+
+body {
+  background-image: url("/img/background img.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Robot-bold", sans-serif !important;
+}
+
+.bg-grey {
+  background-color: #f0f2fb;
+}
+
+.main-section {
+  height: 100vh;
+}
+
+.login-section {
+  height: 89%;
+  width: 1000px !important;
+  -webkit-box-shadow: 3px 3px 5px 6px #888;
+          box-shadow: 3px 3px 5px 6px #888;
+  background: #fff;
+}
+
+.motive2 {
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  opacity: 0.2;
+}
+
+.login-form {
+  width: 40%;
+  height: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-form .form-text-area {
+  width: 80%;
+}
+
+.login-form label {
+  font-family: "Roboto", sans-serif;
+}
+
+.login-form i {
+  font-size: 1em;
+  color: #a7a1a1;
+  right: 3%;
+  top: 0.7em;
+}
+
+.login-form input {
+  background-color: #f6f6f6;
+  border: #f3f2f2;
+}
+
+.login-form input[type="password"] {
+  padding-right: 2em;
+}
+
+.login-form input[type="checkbox"] {
+  border: #f3f2f2;
+}
+
+.login-form input[type="button"] {
+  background-color: #3ea2f9;
+  border-radius: 20px;
+}
+
+.login-form .fa-eye {
+  display: none;
+}
+
+.form-img {
+  width: 60%;
+  position: relative;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form-img .logo {
+  position: relative;
+  top: 2%;
+  left: 2%;
+  width: 20%;
+  display: block;
+}
+
+.form-img div {
+  height: 100%;
+}
+
+.form-img .img-backpack {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 30px !important;
+}
+
+.rememberme {
+  color: black;
+  font-size: 0.8em !important;
+  line-height: 2em;
+}
+
+@media (max-width: 1008px) {
+  .logo-sm {
+    width: 50%;
+    margin: 0 auto 10%;
+    display: block;
+  }
+  .login-form {
+    max-height: 80%;
+    width: 425px;
+  }
+}
+
+@media (max-width: 425px) {
+  .login-form {
+    max-height: 100%;
+    width: 100%;
+  }
+}
+
+.pass-icon:hover .fa-eye {
+  display: block;
+}
+
+.pass-icon:hover .fa-eye-slash {
+  display: none;
+}
+/*# sourceMappingURL=styles.css.map */
