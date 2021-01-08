@@ -124,4 +124,9 @@ class AdminController extends Controller
             return redirect('class/show');
         }
     }
+    public function showStudents(){
+        $classes = Classes::orderBy('name', 'ASC')->get();
+        $students = Student::orderBy('fname', 'ASC')->get();
+        return view('pages.admin.showstudents')->withClasses($classes)->withStudents($students);
+    }
 }

@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group mx-sm-3 mb-2 custom-control custom-checkbox ">
                   <input type="checkbox" class="custom-control-input font-1em" id="remember_me" name="remember">
-                  <label class="custom-control-label rememberme" for="rememberme">Remember me</label>
+                  <label class="custom-control-label rememberme" for="remember_me">Remember me</label>
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
                   <button class="btn btn-primary btn-md btn-block" type="submit">Submit</button>

@@ -17,7 +17,8 @@
     <h1>Students</h1>
     <p>
         <ul>    
-           <li><a href="student/add">Add Students</a></li> 
+           <li><a href="student/add">Add Students</a></li>
+           <li><a href="student/show">Edit Students</a></li>
         </ul>
     </p>
 </p>
