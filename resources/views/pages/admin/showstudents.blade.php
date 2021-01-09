@@ -2,6 +2,7 @@
 @section('page')
     View and Edit Students
 @endsection
+@section('content')
 <p><h1> View and Edit Students</h1></p>
 @if (count($classes) == 0)
     Please <a href="class/add">create classes first</a>
@@ -31,6 +32,7 @@
                 <td>{{ $i }}</td>
                 <td>{{ $student->fname }} {{ $student->mname }} {{ $student->sname }}</td>
                 <td>{{ $student->class->name }}</td>
+                <td><a href="{{ url('student/show/'.$student->id) }}">Edit</a> <a href="{{ url('student/delete/'.$student->id) }}">Delete</a></td>
             </tr>
             @php
                 $i++
@@ -38,6 +40,4 @@
         @endforeach
     </table>
 @endif
-@section('content')
-
 @endsection

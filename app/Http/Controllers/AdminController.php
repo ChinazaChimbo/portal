@@ -129,4 +129,104 @@ class AdminController extends Controller
         $students = Student::orderBy('fname', 'ASC')->get();
         return view('pages.admin.showstudents')->withClasses($classes)->withStudents($students);
     }
+
+    public function editStudent($id){
+        if(Student::where('id', '=', $id)->exists()){
+            $student = Student::find($id);
+            $classes = Classes::orderBy('name', 'ASC')->get();
+            return view('pages.admin.showeditstudent')->withClasses($classes)->withStudent($student);
+        }else{
+            FlashAlert::warning('Warning', 'This student does not exist');
+            return redirect('student/show');
+        }
+    }
+
+    public function storeEdit(Request $request){
+        $this->validate($request, array(
+            'pro_pic' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'fname' => 'required|alpha|max:60',
+            'mname' => 'required|alpha|max:60',
+            'sname' => 'required|alpha|max:60',
+            'username' => 'required|max:60',
+            'password' => 'required|confirmed|max:60',
+            'dob' => 'required',
+            'email' => 'email',
+            'pnumber' => 'nullable|digits:11|max:11',
+            'guardian' => 'required|max:60',
+            'gnumber' => 'required|digits:11|max:60',
+            'address' => 'required',
+            'state' => 'required',
+            'lga' => 'required',
+        ));
+
+        if($request->hasFile('pro_pic')){
+            $imageName = time().'.'.$request->pro_pic->extension();  
+            $student = Student::where('id', $request->id)
+                                ->update(['fname' => $request->fname,
+                                         'mname' => $request->mname,
+                                         'sname' => $request->sname,
+                                         'gender' => $request->gender,
+                                         'dob' => $request->dob,
+                                         'email' => $request->email,
+                                         'phone' => $request->phone,
+                                         'address' => $request->address,
+                                         'state' => $request->state,
+                                         'lga' => $request->lga,
+                                         'username' => $request->username,
+                                         'password' => $request->password,
+                                         'sclass' => $request->class,
+                                         'profile_pic' => $imageName],
+                                    );
+            $request->pro_pic->move(public_path('images/profile_pictures'), $imageName);
+
+            $guard = Guardian::where('student_id', $request->id)
+                               ->update(
+                                   ['name' => $request->id,
+                                   'phone' => $request->gnumber],
+                               );
+            FlashAlert::success('Success', 'Student has been edited.');
+            return redirect('student/show');
+        }else{
+            $student = Student::where('id', $request->id)
+                                ->update(['fname' => $request->fname,
+                                         'mname' => $request->mname,
+                                         'sname' => $request->sname,
+                                         'gender' => $request->gender,
+                                         'dob' => $request->dob,
+                                         'email' => $request->email,
+                                         'phone' => $request->phone,
+                                         'address' => $request->address,
+                                         'state' => $request->state,
+                                         'lga' => $request->lga,
+                                         'username' => $request->username,
+                                         'password' => $request->password,
+                                         'sclass' => $request->class],
+                                    );
+
+                                    $guard = Guardian::where('student_id', $request->id)
+                                    ->update(
+                                        ['name' => $request->id,
+                                        'phone' => $request->gnumber],
+                                    );
+            FlashAlert::success('Success', 'Student has been edited.');
+            return redirect('student/show');
+        }
+    }
+
+    public function confEdit($id){
+        if (Student::where('id', '=', $id)->exists()) {
+            $student = Student::find($id);
+            return view('pages.admin.confdelstu')->withStudent($student);
+        }else{
+            FlashAlert::warning('Warning', 'Student does not exist');
+            return redirect('student/show');
+        }
+    }
+
+    public function delStudent(Request $request){
+        Student::where('id', '=', $request->id)->delete();
+        Guardian::where('student_id', '=', $request->id)->delete();
+        FlashAlert::success('success', 'Student has been removed successfully');
+        return redirect('student/show');
+    }
 }

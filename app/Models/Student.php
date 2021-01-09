@@ -12,4 +12,8 @@ class Student extends Model
     public function class(){
         return $this->BelongsTo(Classes::class, 'sclass');
     }
+
+    public function guardian(){
+        return $this->hasOne(Guardian::class, 'student_id');
+    }
 }
